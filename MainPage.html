@@ -4,47 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to UTECH-CARE</title>
-  
-    <h1> School Clinic Student Logs</h1>
+
     <style> 
-         h1 {
-            text-align: center; font-size: 60px; color:rgb(5, 3, 83);
+        h1 {
+            text-align: center; 
+            font-size: 60px; 
+            color: rgb(5, 3, 83);
         }
-         h2 {
-            text-align: center; font-size: 30px;
+        h2 {
+            text-align: center; 
+            font-size: 30px;
         }
-    </style>
-    
+
+        /* FIXED BUTTON - MOVED LOWER */
+        #addLogBtn {
+            position: fixed;
+            top: 150px; 
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 25px;
+            font-size: 16px;
+            background: #4464ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #addLogBtn:hover {
+            background: #2d49cc;
+        }
+
+</style>
 </head>
+
 <body>
 
-    <h2>Student Names & Details</h2>
-    <button onclick="addStudentLog()">Add Student Log</button> 
+    <h1>School Clinic Student Logs</h1>
 
-    <h3>Logs:</h3>
+
+    <button id="addLogBtn" onclick="addStudentLog()">Add Student Log</button> 
+
+    <h3 style="margin-top: 220px;">Student Names & Details Logs:</h3>
     <ul id="logList"></ul>
 
-<script>
+    <script>
+        function addStudentLog() {
+            const studentName = prompt("Enter Student Name:");
+            if (!studentName || studentName.trim() === "") return;
 
-function addStudentLog() {
-    const studentName = prompt("Enter Student Name:");
-    if (!studentName || studentName.trim() === "") return;
+            const purpose = prompt("Enter Purpose of Visit:");
+            if (!purpose || purpose.trim() === "") return;
 
-    const purpose = prompt("Enter Purpose of Visit:");
-    if (!purpose || purpose.trim() === "") return;
+            const li = document.createElement("li");
+            li.textContent = studentName.trim() + " - " + purpose.trim();
 
-    const li = document.createElement("li");
-    li.textContent = studentName.trim() + " - " + purpose.trim();
+            const delBtn = document.createElement("button");
+            delBtn.textContent = "Delete";
+            delBtn.onclick = () => li.remove();
 
-    const delBtn = document.createElement("button");
-    delBtn.textContent = " Delete ";
-    delBtn.onclick = () => li.remove();
-
-    li.appendChild(delBtn);
-    document.getElementById("logList").appendChild(li);
-}
-
-</script>
-
+            li.appendChild(delBtn);
+            document.getElementById("logList").appendChild(li);
+        }
+    </script>
+     
 </body>
 </html>
