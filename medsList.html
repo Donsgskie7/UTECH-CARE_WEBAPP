@@ -3,9 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+   <title>Medicine List - UTECH-CARE</title>
 </head>
-<body>
+<body class="p-4">
+
+    <!-- Navigation Pills -->
+<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm mb-4"
+    role="tablist"
+    style="--bs-nav-link-color: var(--bs-white);
+           --bs-nav-pills-link-active-color: var(--bs-primary);
+           --bs-nav-pills-link-active-bg: var(--bs-white);">
+
+  <li class="nav-item">
+    <a class="nav-link rounded-5 text-center" href="MainPage.html">Student Log</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link rounded-5 text-center active" href="medsList.html">Medicine List</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link rounded-5 text-center" href="checkUp.html">Check Up Schedule</a>
+  </li>
+</ul>
+
+<h1 class="text-center mb-4">Medicine List</h1>
+
+
+<div class="container">
+
+    <div class="d-flex justify-content-between mb-3">
+        <input type="text" id="searchInput" class="form-control w-50" placeholder="Search medicine..." onkeyup="filterMedicine()">
+
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addMedicineModal">
+            <i class="bi bi-plus-circle"></i> Add Medicine
+        </button>
+    </div>
+
+    <div class="table-responsive shadow-sm">
+        <table class="table table-bordered table-hover align-middle" id="medicineTable">
+            <thead class="table-primary text-center">
+                <tr>
+                    <th>#</th>
+                    <th>Medicine Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Expiration Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="medicineBody"></tbody>
+        </table>
+    </div>
+</div>
+
     
 </body>
 </html>
